@@ -1,3 +1,23 @@
 Source: https://community.element14.com/technologies/fpga-group/b/blog/posts/installing-xilinx-vivado-on-ubuntu
 
 Source 2: https://support.xilinx.com/s/article/63794?language=en_US
+
+Issue: unable to locate libt5
+Solution:
+cat <<EOF | sudo tee /etc/apt/sources.list
+deb http://archive.ubuntu.com/ubuntu/ focal main universe multiverse restricted
+deb http://security.ubuntu.com/ubuntu/ focal-security main universe multiverse restricted
+deb http://archive.ubuntu.com/ubuntu/ focal-updates main universe multiverse restricted
+deb http://archive.ubuntu.com/ubuntu/ focal-backports main universe multiverse restricted
+
+deb-src http://archive.ubuntu.com/ubuntu/ focal main universe multiverse restricted
+deb-src http://security.ubuntu.com/ubuntu/ focal-security main universe multiverse restricted
+deb-src http://archive.ubuntu.com/ubuntu/ focal-updates main universe multiverse restricted
+deb-src http://archive.ubuntu.com/ubuntu/ focal-backports main universe multiverse restricted
+EOF
+
+Then
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libncurses5 libncurses5:i386
+
