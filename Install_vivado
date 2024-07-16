@@ -21,3 +21,13 @@ sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get install libncurses5 libncurses5:i386
 
+Install cable driver:
+
+# change directory to your Vivado install, for example:
+cd /opt/Xilinx/Vivado/2019.2
+
+# cd into the drivers directory (the script MUST be run there)
+cd data/xicom/cable_drivers/lin64/install_script/install_drivers
+
+# run the cable installer with root privileges
+sudo ./install_drivers
